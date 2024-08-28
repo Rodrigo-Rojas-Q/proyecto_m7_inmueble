@@ -1,0 +1,367 @@
+[
+    {
+      "model": "inmueble_app.user",
+      "pk": 1,
+      "fields": {
+        "nombre": "Juan",
+        "apellido": "Pérez",
+        "rut": "12345678-9",
+        "direccion": "Calle 123, Santiago",
+        "telefono": "+56912345678",
+        "correo": "juan.perez@email.com",
+        "tipo_usuario": 1
+      }
+    },
+    {
+      "model": "inmueble_app.user",
+      "pk": 2,
+      "fields": {
+        "nombre": "María",
+        "apellido": "González",
+        "rut": "98765432-1",
+        "direccion": "Avenida 456, Valparaíso",
+        "telefono": "+56987654321",
+        "correo": "maria.gonzalez@email.com",
+        "tipo_usuario": 2
+      }
+    },
+    {
+      "model": "inmueble_app.user",
+      "pk": 3,
+      "fields": {
+        "nombre": "Carlos",
+        "apellido": "Rodríguez",
+        "rut": "11223344-5",
+        "direccion": "Pasaje 789, Concepción",
+        "telefono": "+56911223344",
+        "correo": "carlos.rodriguez@email.com",
+        "tipo_usuario": 1
+      }
+    },
+    {
+      "model": "inmueble_app.user",
+      "pk": 4,
+      "fields": {
+        "nombre": "Ana",
+        "apellido": "Martínez",
+        "rut": "55667788-9",
+        "direccion": "Avenida 101, Viña del Mar",
+        "telefono": "+56955667788",
+        "correo": "ana.martinez@email.com",
+        "tipo_usuario": 2
+      }
+    },
+    {
+      "model": "inmueble_app.user",
+      "pk": 5,
+      "fields": {
+        "nombre": "Pedro",
+        "apellido": "López",
+        "rut": "99887766-5",
+        "direccion": "Calle 202, Antofagasta",
+        "telefono": "+56999887766",
+        "correo": "pedro.lopez@email.com",
+        "tipo_usuario": 1
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 1,
+      "fields": {
+        "nombre": "Casa en Santiago Centro",
+        "descripcion": "Hermosa casa con jardín en el centro de Santiago",
+        "m2_construidos": 120.5,
+        "m2_terreno": 200.0,
+        "numero_estacionamientos": 2,
+        "numero_habitaciones": 3,
+        "numero_banos": 2,
+        "direccion": "Calle Principal 789, Santiago",
+        "id_user": 1,
+        "id_comuna": 113,
+        "id_region": 7,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "500000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 2,
+      "fields": {
+        "nombre": "Apartamento en Viña del Mar",
+        "descripcion": "Moderno apartamento con vista al mar",
+        "m2_construidos": 80.0,
+        "m2_terreno": 80.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 2,
+        "numero_banos": 1,
+        "direccion": "Avenida Costera 456, Viña del Mar",
+        "id_user": 2,
+        "id_comuna": 51,
+        "id_region": 6,
+        "id_tipoinmueble": 2,
+        "precio_mensual": "350000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 3,
+      "fields": {
+        "nombre": "Casa de campo en Chillán",
+        "descripcion": "Amplia casa de campo con terreno extenso",
+        "m2_construidos": 150.0,
+        "m2_terreno": 1000.0,
+        "numero_estacionamientos": 3,
+        "numero_habitaciones": 4,
+        "numero_banos": 3,
+        "direccion": "Camino Rural 123, Chillán",
+        "id_user": 3,
+        "id_comuna": 198,
+        "id_region": 10,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "600000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 4,
+      "fields": {
+        "nombre": "Loft en Bellavista",
+        "descripcion": "Moderno loft en el corazón de Bellavista",
+        "m2_construidos": 60.0,
+        "m2_terreno": 60.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 1,
+        "numero_banos": 1,
+        "direccion": "Calle Pio Nono 789, Providencia",
+        "id_user": 4,
+        "id_comuna": 104,
+        "id_region": 7,
+        "id_tipoinmueble": 3,
+        "precio_mensual": "400000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 5,
+      "fields": {
+        "nombre": "Casa en Concón",
+        "descripcion": "Casa familiar con vista al océano",
+        "m2_construidos": 180.0,
+        "m2_terreno": 300.0,
+        "numero_estacionamientos": 2,
+        "numero_habitaciones": 4,
+        "numero_banos": 3,
+        "direccion": "Avenida Borgoño 1234, Concón",
+        "id_user": 5,
+        "id_comuna": 47,
+        "id_region": 6,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "800000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 6,
+      "fields": {
+        "nombre": "Oficina en Las Condes",
+        "descripcion": "Oficina moderna en sector empresarial",
+        "m2_construidos": 50.0,
+        "m2_terreno": 50.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 1,
+        "numero_banos": 1,
+        "direccion": "Av. Apoquindo 5400, Las Condes",
+        "id_user": 1,
+        "id_comuna": 95,
+        "id_region": 7,
+        "id_tipoinmueble": 2,
+        "precio_mensual": "450000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 7,
+      "fields": {
+        "nombre": "Cabaña en Pucón",
+        "descripcion": "Acogedora cabaña cerca del lago Villarrica",
+        "m2_construidos": 70.0,
+        "m2_terreno": 150.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 2,
+        "numero_banos": 1,
+        "direccion": "Camino al Volcán 789, Pucón",
+        "id_user": 2,
+        "id_comuna": 266,
+        "id_region": 12,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "300000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 8,
+      "fields": {
+        "nombre": "Departamento en Iquique",
+        "descripcion": "Departamento con vista al mar en Playa Brava",
+        "m2_construidos": 90.0,
+        "m2_terreno": 90.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 3,
+        "numero_banos": 2,
+        "direccion": "Av. Arturo Prat 2000, Iquique",
+        "id_user": 3,
+        "id_comuna": 5,
+        "id_region": 2,
+        "id_tipoinmueble": 2,
+        "precio_mensual": "400000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 9,
+      "fields": {
+        "nombre": "Casa en Puerto Varas",
+        "descripcion": "Casa estilo alemán con vista al lago Llanquihue",
+        "m2_construidos": 140.0,
+        "m2_terreno": 250.0,
+        "numero_estacionamientos": 2,
+        "numero_habitaciones": 3,
+        "numero_banos": 2,
+        "direccion": "Calle Del Salvador 345, Puerto Varas",
+        "id_user": 4,
+        "id_comuna": 304,
+        "id_region": 14,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "550000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 10,
+      "fields": {
+        "nombre": "Estudio en Valdivia",
+        "descripcion": "Pequeño estudio cerca de la universidad",
+        "m2_construidos": 40.0,
+        "m2_terreno": 40.0,
+        "numero_estacionamientos": 0,
+        "numero_habitaciones": 1,
+        "numero_banos": 1,
+        "direccion": "Calle Independencia 640, Valdivia",
+        "id_user": 5,
+        "id_comuna": 284,
+        "id_region": 13,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "250000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 11,
+      "fields": {
+        "nombre": "Casa en La Serena",
+        "descripcion": "Casa colonial en el centro histórico",
+        "m2_construidos": 160.0,
+        "m2_terreno": 200.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 4,
+        "numero_banos": 3,
+        "direccion": "Calle Balmaceda 1234, La Serena",
+        "id_user": 1,
+        "id_comuna": 30,
+        "id_region": 5,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "600000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 12,
+      "fields": {
+        "nombre": "Departamento en Antofagasta",
+        "descripcion": "Moderno departamento con vista al océano",
+        "m2_construidos": 85.0,
+        "m2_terreno": 85.0,
+        "numero_estacionamientos": 1,
+        "numero_habitaciones": 2,
+        "numero_banos": 2,
+        "direccion": "Av. República de Croacia 987, Antofagasta",
+        "id_user": 2,
+        "id_comuna": 12,
+        "id_region": 3,
+        "id_tipoinmueble": 2,
+        "precio_mensual": "450000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 13,
+      "fields": {
+        "nombre": "Casa en Rancagua",
+        "descripcion": "Amplia casa familiar con piscina",
+        "m2_construidos": 180.0,
+        "m2_terreno": 500.0,
+        "numero_estacionamientos": 2,
+        "numero_habitaciones": 4,
+        "numero_banos": 3,
+        "direccion": "Av. Millán 456, Rancagua",
+        "id_user": 3,
+        "id_comuna": 135,
+        "id_region": 8,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "700000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 14,
+      "fields": {
+        "nombre": "Loft en Bellavista",
+        "descripcion": "Loft artístico en barrio bohemio",
+        "m2_construidos": 65.0,
+        "m2_terreno": 65.0,
+        "numero_estacionamientos": 0,
+        "numero_habitaciones": 1,
+        "numero_banos": 1,
+        "direccion": "Calle Dardignac 123, Providencia",
+        "id_user": 4,
+        "id_comuna": 104,
+        "id_region": 7,
+        "id_tipoinmueble": 2,
+        "precio_mensual": "380000.00",
+        "estado": true
+      }
+    },
+    {
+      "model": "inmueble_app.inmueble",
+      "pk": 15,
+      "fields": {
+        "nombre": "Casa en Viña del Mar",
+        "descripcion": "Casa con jardín cerca de la playa",
+        "m2_construidos": 130.0,
+        "m2_terreno": 200.0,
+        "numero_estacionamientos": 2,
+        "numero_habitaciones": 3,
+        "numero_banos": 2,
+        "direccion": "Calle Valparaíso 789, Viña del Mar",
+        "id_user": 5,
+        "id_comuna": 51,
+        "id_region": 6,
+        "id_tipoinmueble": 1,
+        "precio_mensual": "380000.00",
+        "estado": true
+      }
+    }
+]      

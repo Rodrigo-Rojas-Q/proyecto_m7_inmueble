@@ -1,0 +1,97 @@
+
+
+--- Antofagasta ---
+
+Nombre: Departamento en Antofagasta
+Descripción: Moderno departamento con vista al océano
+
+
+
+--- Chillán ---
+
+Nombre: Casa de campo en Chillán
+Descripción: Amplia casa de campo con terreno extenso
+
+
+
+--- Concón ---
+
+Nombre: Casa en Concón
+Descripción: Casa familiar con vista al océano
+
+
+
+--- Iquique ---
+
+Nombre: Departamento en Iquique
+Descripción: Departamento con vista al mar en Playa Brava
+
+
+
+--- La Serena ---
+
+Nombre: Casa en La Serena
+Descripción: Casa colonial en el centro histórico
+
+
+
+--- Las Condes ---
+
+Nombre: Oficina en Las Condes
+Descripción: Oficina moderna en sector empresarial
+
+
+
+--- Providencia ---
+
+Nombre: Loft en Bellavista
+Descripción: Loft artístico en barrio bohemio
+
+Nombre: Loft en Bellavista
+Descripción: Moderno loft en el corazón de Bellavista
+
+
+
+--- Pucón ---
+
+Nombre: Cabaña en Pucón
+Descripción: Acogedora cabaña cerca del lago Villarrica
+
+
+
+--- Puerto Varas ---
+
+Nombre: Casa en Puerto Varas
+Descripción: Casa estilo alemán con vista al lago Llanquihue
+
+
+
+--- Rancagua ---
+
+Nombre: Casa en Rancagua
+Descripción: Amplia casa familiar con piscina
+
+
+
+--- Santiago ---
+
+Nombre: Casa en Santiago Centro
+Descripción: Hermosa casa con jardín en el centro de Santiago
+
+
+
+--- Valdivia ---
+
+Nombre: Estudio en Valdivia
+Descripción: Pequeño estudio cerca de la universidad
+
+
+
+--- Viña del Mar ---
+
+Nombre: Apartamento en Viña del Mar
+Descripción: Moderno apartamento con vista al mar
+
+Nombre: Casa en Viña del Mar
+Descripción: Casa con jardín cerca de la playa
+
