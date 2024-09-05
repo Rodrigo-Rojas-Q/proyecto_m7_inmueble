@@ -1,28 +1,37 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 class TipoInmueble(models.Model):
     nombre_tipo_inmueble = models.CharField(max_length=100)
 
-class TipoUser(models.Model):
-    nombre_tipo_usuario = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.nombre_tipo_usuario
-
-class User(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    rut = models.CharField(max_length=12)
+class User(AbstractUser):
+    rut = models.CharField(max_length=12, unique=True)
     direccion = models.CharField(max_length=255)
     telefono = models.CharField(max_length=15)
-    correo = models.EmailField()
-    tipo_usuario = models.ForeignKey(TipoUser, on_delete=models.CASCADE)
+    TIPOS_USUARIO = [
+        ('ARRENDATARIO', 'Arrendatario'),
+        ('ARRENDADOR', 'Arrendador'),
+    ]
+    tipo_usuario = models.CharField(max_length=12, choices=TIPOS_USUARIO)
 
-    def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+        related_name='usuario_set',
+        related_query_name='usuario',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name='usuario_set',
+        related_query_name='usuario',
+    )
     
 class Region(models.Model):
     nombre_region = models.CharField(max_length=100)
@@ -46,12 +55,23 @@ class Inmueble(models.Model):
     numero_habitaciones = models.IntegerField()
     numero_banos = models.IntegerField()
     direccion = models.CharField(max_length=255)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    arrendador = models.ForeignKey(User, on_delete=models.CASCADE, related_name='propiedades')
     id_comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
     id_region = models.ForeignKey(Region, on_delete=models.CASCADE)
-    id_tipoinmueble = models.ForeignKey(TipoInmueble, on_delete=models.CASCADE)
+    id_tipoinmueble = models.ForeignKey(TipoInmueble, on_delete=models.CASCADE, related_name='inmuebles')
     precio_mensual = models.DecimalField(max_digits=10, decimal_places=2)
     estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre
+
+class SolicitudArriendo(models.Model):
+    arrendatario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='solicitudes')
+    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE)
+    fecha_solicitud = models.DateTimeField(auto_now_add=True)
+    ESTADOS = [
+        ('PENDIENTE', 'Pendiente'),
+        ('ACEPTADA', 'Aceptada'),
+        ('RECHAZADA', 'Rechazada'),
+    ]
+    estado = models.CharField(max_length=10, choices=ESTADOS, default='PENDIENTE')
