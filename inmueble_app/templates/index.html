@@ -7,11 +7,26 @@
     <div class="container">
         <div class="row mb-4">
             <div class="col">
-                <h1 class="text-center">Bienvenido al Portal de Arriendos</h1>
+                <div id="typed-output" class="mt-5">
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var options = {
+                                strings: ["{ ","BIENVENIDO A", "LOS LAGOS INMOBILIARIA"], // Textos que deseas mostrar
+                                typeSpeed: 50, // Velocidad de escritura en milisegundos
+                                backSpeed: 25, // Velocidad de borrado en milisegundos
+                                backDelay: 1000, // Tiempo de espera antes de borrar
+                                startDelay: 500, // Tiempo de espera antes de comenzar
+                                loop: true, // Repetir el efecto en bucle
+                                showCursor: true // Mostrar el cursor parpadeante
+                            };
+                            
+                            var typed = new Typed('#typed-output', options);
+                        });
+                    </script>
+                        
+                </div>
                 {% if user.is_authenticated %}
-                    <p class="text-center">Hola, {{ user.username }}. ¡Gracias por visitarnos!</p>
-                {% else %}
-                    <p class="text-center">Explora nuestras propiedades disponibles para arriendo.</p>
+                    <h3 class="text-center">Hola, {{ user.username }}. ¡Gracias por visitarnos!</h3>
                 {% endif %}
             </div>
         </div>
@@ -55,4 +70,5 @@
             </button>
         </div>
     </div>
+    
 {% endblock %}

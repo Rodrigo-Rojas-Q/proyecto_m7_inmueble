@@ -1,11 +1,16 @@
-.nav-item.active .nav-link{
-    color: #fff;
-    background-color: #7478c8;
-    border-radius: 15%;
+.navbar{
+    background-color: #1b1b22;
+    color:#d8c5a7;
+}
+
+.custom-footer{
+    background-color: #1b1b22;
+    color:#d8c5a7;
 }
 
 .navbar-nav{
     margin-left: auto; /* Empuja los elementos de sesión hacia la derecha */
+    
 }
 
 .navbar-nav.mx-auto{
@@ -23,6 +28,15 @@
     margin-left: auto; /* Empuja los elementos de sesión hacia la derecha */
 }
 
+.navbar-text{
+    color:#d8c5a7;
+}
+
+.btn {
+    color:#d8c5a7;
+    background-color: #1b1b22;
+}
+
 .btnlogin{
     display: flex;
     justify-content: center;
@@ -30,12 +44,13 @@
 }
 
 #btnlogin{
-    background-color: #7478c8;
-    color:#fff;
+    background-color: black;
+    color:#d8c5a7;
 }
 
 .nav-link {
-    color: black;
+    color:#d8c5a7;
+
     /* Texto blanco */
     padding: 15px 20px;
     /* Espaciado adecuado */
@@ -46,9 +61,9 @@
 }
 
 .nav-link:hover {
-    background-color: #7478c8;
+    background-color:#d8c5a7;
     /* Cambio de fondo al hacer hover */
-    color: #fff;
+    color: #1b1b22;
     /* Cambio de color de texto al hacer hover */
     border-radius: 15%;
     
@@ -60,4 +75,78 @@
     border: none;              /* Quita el borde por defecto */
     display: flex;
     justify-content: center;
+}
+
+#typed-output {
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 3rem; /* Ajusta el tamaño de la fuente según tus necesidades */
+    font-weight: bold; /* Opcional: para que el texto sea más negrita */
+    color: #d8c5a7; /* Opcional: para cambiar el color del texto */
+    margin-top: 5rem; /* Espacio superior para separar del contenido anterior */
+}
+
+.samita_productLabel-content {
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    margin: auto;
+    opacity: 1;
+    width: 15%;
+    height: auto;
+    transform: rotate(5deg);
+    animation: hi-there-samita 2s infinite;
+    margin: 0;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 8px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    background: linear-gradient(to right, rgba(7, 0, 0, 1), rgba(7, 0, 0, 1));
+    color: rgba(241, 237, 237, 1);
+  }
+  
+  @keyframes hi-there-samita {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+.page-link{
+    color:#d8c5a7;
+    background-color: #1b1b22;
+}
+
+.pagination .page-item .page-link:hover{
+    color:#1b1b22;
+    background-color: #d8c5a7;
+}
+
+/* Cambia el color de fondo y del texto del elemento activo en la paginación */
+.pagination .page-item.active .page-link {
+    background-color: #1b1b22; /* Cambia el color de fondo del elemento activo */
+    color: #d8c5a7; /* Cambia el color del texto del elemento activo */
+    border-color: #d8c5a7; /* Cambia el color del borde del elemento activo */
+}
+
+/* Opcional: Cambia el color del texto al pasar el mouse sobre el elemento activo */
+.pagination .page-item.active .page-link:hover {
+    background-color: #d8c5a7; /* Cambia el color de fondo al pasar el mouse */
+    color: #1b1b22; /* Cambia el color del texto al pasar el mouse */
+}
+
+.btn-primary:hover{
+    background-color: #d8c5a7; /* Cambia el color de fondo al pasar el mouse */
+    color: #1b1b22; /* Cambia el color del texto al pasar el mouse */
+    border-color: #d8c5a7; /* Cambia el color del borde del elemento activo */
 }

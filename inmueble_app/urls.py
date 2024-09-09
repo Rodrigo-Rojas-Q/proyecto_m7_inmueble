@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
@@ -9,4 +10,11 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('perfil/', views.perfil, name='perfil'),
     path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
+    path('agregar-inmueble/', views.agregar_inmueble, name='agregar_inmueble'),
+    path('lista-inmuebles/', views.lista_inmuebles, name='lista_inmuebles'),
+    path('inmueble/<int:id>/', views.detalle_inmueble, name='detalle_inmueble'),  # Ruta para el detalle del inmueble
+    path('inmueble/actualizar/<int:id>/', views.actualizar_inmueble, name='actualizar_inmueble'),
+    path('inmueble/<int:id>/borrar/', views.borrar_inmueble, name='borrar_inmueble'),
+    
+    #path('inmueble/<int:id>/editar/', views.actualizar_inmueble, name='actualizar_inmueble'),
 ]

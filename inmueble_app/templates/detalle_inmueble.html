@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h1>Detalle del Inmueble</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">{{ inmueble.nombre }}</h2>
+        <p class="card-text"><strong>Tipo:</strong> {{ inmueble.id_tipoinmueble.nombre_tipo_inmueble }}</p>
+        <p class="card-text"><strong>Descripción:</strong> {{ inmueble.descripcion }}</p>
+        <p class="card-text"><strong>Precio:</strong> {{ inmueble.precio_mensual }}</p>
+        <p class="card-text"><strong>Ciudad:</strong> {{ inmueble.id_comuna }}</p>
+        <p class="card-text"><strong>Area Construida (M2):</strong> {{ inmueble.m2_construidos }}</p>
+        <p class="card-text"><strong>Area de Terreno (M2):</strong> {{ inmueble.m2_terreno }}</p>
+        <p class="card-text"><strong>Numero de Estacionamientos:</strong> {{ inmueble.numero_estacionamientos }}</p>
+        <p class="card-text"><strong>Numero de Habitaciones:</strong> {{ inmueble.numero_habitaciones }}</p>
+        <p class="card-text"><strong>Numero de Baños:</strong> {{ inmueble.numero_banos }}</p>
+        <p class="card-text"><strong>Dirección:</strong> {{ inmueble.direccion }}</p>
+        <p class="card-text"><strong>Nombre de Arrendador:</strong> {{ inmueble.arrendador }}</p>
+        <p class="card-text"><strong>Region:</strong> {{ inmueble.id_region }}</p>
+        <a href="{% url 'lista_inmuebles' %}" class="btn btn-primary">Volver a la Lista</a>
+        {% if user.is_authenticated %}
+            {% if user.tipo_usuario == 'ARRENDADOR' %}
+            <a href="{% url 'actualizar_inmueble' inmueble.id %}" class="btn btn-warning">Editar</a>
+            <form action="{% url 'borrar_inmueble' inmueble.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Borrar</button>
+            </form>
+            {% endif %} 
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

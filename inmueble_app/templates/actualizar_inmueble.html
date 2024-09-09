@@ -1,0 +1,94 @@
+{% extends 'base_generic.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<h1>Actualizar Inmueble</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.non_field_errors }} <!-- Muestra errores generales del formulario -->
+        <label for="id_nombre">Nombre:</label>
+        {{ form.nombre|add_class:"form-control" }}
+        {{ form.nombre.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="id_tipoinmueble">Tipo de Inmueble:</label>
+        {{ form.id_tipoinmueble|add_class:"form-control" }}
+        {{ form.id_tipoinmueble.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="id_descripcion">Descripción:</label>
+        {{ form.descripcion|add_class:"form-control" }}
+        {{ form.descripcion.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="id_precio_mensual">Precio Mensual:</label>
+        {{ form.precio_mensual|add_class:"form-control" }}
+        {{ form.precio_mensual.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="id_comuna">Comuna:</label>
+        {{ form.id_comuna|add_class:"form-control" }}
+        {{ form.id_comuna.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="id_region">Region:</label>
+        {{ form.id_region|add_class:"form-control" }}
+        {{ form.id_region.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="m2_construidos">Area Construida (M2):</label>
+        {{ form.m2_construidos|add_class:"form-control" }}
+        {{ form.m2_construidos.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="m2_terreno">Area de Terreno (M2):</label>
+        {{ form.m2_terreno|add_class:"form-control" }}
+        {{ form.m2_terreno.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="numero_estacionamientos">Numero de Estacionamientos:</label>
+        {{ form.numero_estacionamientos|add_class:"form-control" }}
+        {{ form.numero_estacionamientos.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="numero_habitaciones">Numero de Habitaciones:</label>
+        {{ form.numero_habitaciones|add_class:"form-control" }}
+        {{ form.numero_habitaciones.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="numero_banos">Numero de Baños:</label>
+        {{ form.numero_banos|add_class:"form-control" }}
+        {{ form.numero_banos.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        {{ form.direccion|add_class:"form-control" }}
+        {{ form.direccion.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+
+    <div class="form-group">
+        <label for="arrendador">Nombre de Arrendador:</label>
+        {{ form.arrendador|add_class:"form-control" }}
+        {{ form.arrendador.errors }} <!-- Muestra errores específicos del campo -->
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="{% url 'detalle_inmueble' inmueble.id %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+    
+</form>
+
+
+{% endblock %}

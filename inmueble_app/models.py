@@ -1,10 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.text import slugify
 
 # Create your models here.
 
 class TipoInmueble(models.Model):
     nombre_tipo_inmueble = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.nombre_tipo_inmueble
 
 class User(AbstractUser):
     rut = models.CharField(max_length=12, unique=True)
@@ -61,6 +65,14 @@ class Inmueble(models.Model):
     id_tipoinmueble = models.ForeignKey(TipoInmueble, on_delete=models.CASCADE, related_name='inmuebles')
     precio_mensual = models.DecimalField(max_digits=10, decimal_places=2)
     estado = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nombre)
+            while Inmueble.objects.filter(slug=self.slug).exists():
+                self.slug = slugify(f"{self.nombre}-{self.pk}")
+        super(Inmueble, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.nombre

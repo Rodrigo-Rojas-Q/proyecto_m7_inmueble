@@ -5,30 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sistema de Arriendo de Inmuebles{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <link rel="icon" href="{% static 'images/isotipo_inmobiliaria.png' %}" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">Arriendos</a>
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'images\logotipo_inmobiliaria.png' %}" alt="Arriendos" style="height: 60px;">
+            </a>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="navbar-text me-5">
+                            {% if user.tipo_usuario == 'ARRENDADOR' %}
+                                Arrendador
+                            {% elif user.tipo_usuario == 'ARRENDATARIO' %}
+                                Arrendatario
+                            {% endif %}
+                        </span>
+                    </li>
+                {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_inmuebles' %}">Lista de Inmuebles</a>
+                    </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
                         </li>
+                        
+                        {% if user.tipo_usuario == 'ARRENDADOR' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'agregar_inmueble' %}">Agregar Inmueble</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
-                        </li>
+                        </li>                      
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
@@ -58,9 +84,11 @@
         {% endblock %}
     </main>
 
-    <footer class="mt-5 py-3 bg-light">
+    <footer class="custom-footer mt-5 py-3">
         <div class="container text-center">
+            <img src="{% static 'images/isotipo_sinfondo.png' %}" alt="Logo del Footer" style="max-height: 50px;">
             <p>&copy; 2024 Sistema de Arriendo de Inmuebles. Todos los derechos reservados.</p>
+            
         </div>
     </footer>
 
