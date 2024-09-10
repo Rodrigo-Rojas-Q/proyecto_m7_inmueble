@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.exceptions import PermissionDenied
+from django.http import JsonResponse
 
 def index(request):
     return render(request, 'index.html')
@@ -43,38 +44,62 @@ def custom_logout_view(request):
 @login_required
 def agregar_inmueble(request):
     if request.method == 'POST':
-        form = AddInmuebleForm(request.POST)
+        form = AddInmuebleForm(request.POST, request.FILES)  # Agrega request.FILES para manejar imágenes
         if form.is_valid():
             inmueble = form.save(commit=False)
             inmueble.arrendador = request.user  # Asigna el arrendador logueado
             inmueble.save()
-            return redirect('lista_inmuebles')  # Redirecciona a la página de lista de inmuebles
+            return redirect('lista_inmuebles')  # Redirecciona a la lista de inmuebles
         else:
             print(form.errors)  # Imprimir los errores en la consola
     else:
         form = AddInmuebleForm()
-    
+
     return render(request, 'agregar_inmueble.html', {'form': form})
 
 
 
 def lista_inmuebles(request):
-    # Muestra todos los inmuebles para todos los usuarios autenticados
     user = request.user
 
+    # Obtener todas las regiones y comunas
+    regiones = Region.objects.all()
+    comunas = Comuna.objects.all()
+
+    # Definir la lista de inmuebles desde el principio
+    inmuebles_list = Inmueble.objects.all()
+
+    # Obtener los filtros desde los parámetros GET
+    comuna_id = request.GET.get('comuna')
+    region_id = request.GET.get('region')
+
+    # Filtrar por comuna y región si están seleccionadas
+    if comuna_id:
+        inmuebles_list = inmuebles_list.filter(id_comuna=comuna_id)
+    if region_id:
+        inmuebles_list = inmuebles_list.filter(id_region=region_id)
+
     # Verifica si el usuario es arrendador
-    if user.tipo_usuario:  # Suponiendo que este campo existe en el modelo User
-        # Si es arrendador, solo muestra los inmuebles que él ha registrado
-        inmuebles_list = Inmueble.objects.filter(arrendador=user)
-    else:
-        # Si no es arrendador, muestra todos los inmuebles (o puedes manejarlo de otra forma)
-        inmuebles_list = Inmueble.objects.all()
+    if request.user.is_authenticated:
+        if user.tipo_usuario == 'ARRENDADOR':  # Asumiendo que 'tipo_usuario' define roles
+            # Si es arrendador, solo muestra los inmuebles que él ha registrado
+            inmuebles_list = inmuebles_list.filter(arrendador=user)
 
-    paginator = Paginator(inmuebles_list, 10)  # Muestra 10 inmuebles por página
-
+    # Paginación
+    paginator = Paginator(inmuebles_list, 5)
     page_number = request.GET.get('page')
     inmuebles = paginator.get_page(page_number)
-    return render(request, 'lista_inmuebles.html', {'inmuebles': inmuebles})
+
+    context = {
+        'inmuebles': inmuebles,
+        'regiones': regiones,
+        'comunas': comunas,
+        'comuna_id': comuna_id,
+        'region_id': region_id
+    }
+
+    return render(request, 'lista_inmuebles.html', context)
+
 
 def detalle_inmueble(request, id):
     inmueble = get_object_or_404(Inmueble, id=id)  # Busca el inmueble por id
@@ -88,10 +113,14 @@ def actualizar_inmueble(request, id):
         raise PermissionDenied
 
     if request.method == 'POST':
-        form = InmuebleForm(request.POST, instance=inmueble)
+        print(request.POST)  # Para ver los datos que se envían en la consola
+        form = InmuebleForm(request.POST, request.FILES, instance=inmueble)
         if form.is_valid():
+            print("El formulario es válido")  # Depura si el formulario es válido
             form.save()
             return redirect('lista_inmuebles')
+        else:
+            print(form.errors)  # Muestra los errores del formulario
     else:
         form = InmuebleForm(instance=inmueble)
 
@@ -106,5 +135,9 @@ def borrar_inmueble(request, id):
         return redirect('lista_inmuebles')  # Redirigir a la lista después de eliminar
     return redirect('detalle_inmueble', id=inmueble.id)  # Redirigir si no es el arrendador
 
-
-
+def obtener_comunas(request):
+    region_id = request.GET.get('region_id')
+    print(f"Region ID: {region_id}")  # Para verificar el ID recibido
+    comunas = Comuna.objects.filter(id_region=region_id).values('id', 'nombre_comuna')
+    print(f"Comunas: {list(comunas)}")  # Para verificar las comunas que se retornan
+    return JsonResponse(list(comunas), safe=False)

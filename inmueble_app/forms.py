@@ -75,7 +75,7 @@ class LoginForm(forms.Form):
 class InmuebleForm(forms.ModelForm):
     class Meta:
         model = Inmueble
-        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_terreno', 'numero_estacionamientos', 'numero_habitaciones','numero_banos','direccion','arrendador','id_comuna','id_region','id_tipoinmueble','precio_mensual', 'estado']  # Ajusta los campos según tu modelo
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_terreno', 'numero_estacionamientos', 'numero_habitaciones','numero_banos','direccion','id_comuna','id_region','id_tipoinmueble','precio_mensual', 'imagen', 'estado']  # Ajusta los campos según tu modelo
         labels = {
             'nombre': 'Nombre',
             'descripcion': 'Descripción',
@@ -85,18 +85,19 @@ class InmuebleForm(forms.ModelForm):
             'numero_habitaciones': 'Numero de Habitaciones',
             'numero_banos': 'Numero de Baños',
             'direccion': 'Dirección',
-            'arrendador': 'Nombre de Arrendador',
             'id_comuna': 'Comuna',
             'id_region': 'Region',
             'id_tipoinmueble': 'Tipo de Inmueble',
             'precio_mensual': 'Precio Mensual',
-            'estado': 'Estado'           
+            'imagen': 'Foto del Inmueble',
+            'estado': 'Estado',
+                       
         }
         
 class AddInmuebleForm(forms.ModelForm):
     class Meta:
         model = Inmueble
-        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_terreno', 'numero_estacionamientos', 'numero_habitaciones','numero_banos','direccion','id_comuna','id_region','id_tipoinmueble','precio_mensual', 'estado']  # Ajusta los campos según tu modelo
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_terreno', 'numero_estacionamientos', 'numero_habitaciones','numero_banos','direccion','id_comuna','id_region','id_tipoinmueble','precio_mensual', 'imagen', 'estado']  # Ajusta los campos según tu modelo
         labels = {
             'nombre': 'Nombre',
             'descripcion': 'Descripción',
@@ -110,5 +111,6 @@ class AddInmuebleForm(forms.ModelForm):
             'id_region': 'Region',
             'id_tipoinmueble': 'Tipo de Inmueble',
             'precio_mensual': 'Precio Mensual',
+            'imagen': 'Foto del Inmueble',
             'estado': 'Estado'           
         }

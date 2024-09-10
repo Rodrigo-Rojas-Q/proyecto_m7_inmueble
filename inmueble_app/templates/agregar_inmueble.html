@@ -20,8 +20,6 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-       
-
         <div class="form-group">
             <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
             {{ form.nombre|add_class:"form-control" }}
@@ -95,6 +93,15 @@
         </div>
 
         <div class="form-group">
+            <label for="{{ form.id_region.id_for_label }}" class="form-label">Región</label>
+            {{ form.id_region|add_class:"form-control" }}
+            <!-- Mostrar errores del campo Región -->
+            <div class="text-danger">
+                {{ form.id_region.errors }}
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="{{ form.id_comuna.id_for_label }}" class="form-label">Comuna</label>
             {{ form.id_comuna|add_class:"form-control" }}
             <!-- Mostrar errores del campo Comuna -->
@@ -103,14 +110,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="{{ form.id_region.id_for_label }}" class="form-label">Región</label>
-            {{ form.id_region|add_class:"form-control" }}
-            <!-- Mostrar errores del campo Región -->
-            <div class="text-danger">
-                {{ form.id_region.errors }}
-            </div>
-        </div>
+        
 
         <div class="form-group">
             <label for="{{ form.id_tipoinmueble.id_for_label }}" class="form-label">Tipo de Inmueble</label>
@@ -130,6 +130,15 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label for="{{ form.imagen.id_for_label }}">Imagen del Inmueble</label>
+            {{ form.imagen|add_class:"form-control" }}
+            <!-- Mostrar errores del campo Imagen -->
+            <div class="text-danger">
+                {{ form.imagen.errors }}
+            </div>
+        </div>
+        
         <div class="form-group">
             <div class="form-check">
                 {{ form.estado|add_class:"form-check-input" }}

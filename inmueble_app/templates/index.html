@@ -2,28 +2,31 @@
 
 
 {% block title %}Inicio - Portal de Arriendos{% endblock %}
-
+{% load static %}
 {% block content %}
     <div class="container">
         <div class="row mb-4">
+            
             <div class="col">
-                <div id="typed-output" class="mt-5">
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            var options = {
-                                strings: ["{ ","BIENVENIDO A", "LOS LAGOS INMOBILIARIA"], // Textos que deseas mostrar
-                                typeSpeed: 50, // Velocidad de escritura en milisegundos
-                                backSpeed: 25, // Velocidad de borrado en milisegundos
-                                backDelay: 1000, // Tiempo de espera antes de borrar
-                                startDelay: 500, // Tiempo de espera antes de comenzar
-                                loop: true, // Repetir el efecto en bucle
-                                showCursor: true // Mostrar el cursor parpadeante
-                            };
-                            
-                            var typed = new Typed('#typed-output', options);
-                        });
-                    </script>
-                        
+                <div id="typed-output" class="mt-5 d-flex align-items-center">
+                    <img src="{% static 'images/imagotipo_inmobiliaria.png' %}" alt="Logo" class="me-3" style="width: 250px; height: auto;">
+                    <div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                var options = {
+                                    strings: ["","BIENVENIDO A", "LOS LAGOS INMOBILIARIA"], // Textos que deseas mostrar
+                                    typeSpeed: 35, // Velocidad de escritura en milisegundos
+                                    backSpeed: 25, // Velocidad de borrado en milisegundos
+                                    backDelay: 25, // Tiempo de espera antes de borrar
+                                    startDelay: 0, // Tiempo de espera antes de comenzar
+                                    loop: false, // Repetir el efecto en bucle
+                                    showCursor: false // Mostrar el cursor parpadeante
+                                };
+                                
+                                var typed = new Typed('#typed-output div', options);
+                            });
+                        </script>
+                    </div>
                 </div>
                 {% if user.is_authenticated %}
                     <h3 class="text-center">Hola, {{ user.username }}. ¡Gracias por visitarnos!</h3>

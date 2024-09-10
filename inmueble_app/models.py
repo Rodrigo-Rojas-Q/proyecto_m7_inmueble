@@ -66,6 +66,7 @@ class Inmueble(models.Model):
     precio_mensual = models.DecimalField(max_digits=10, decimal_places=2)
     estado = models.BooleanField(default=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
+    imagen = models.ImageField(upload_to='inmuebles/', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:

@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Actualizar Inmueble</h1>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
         {{ form.non_field_errors }} <!-- Muestra errores generales del formulario -->
@@ -78,11 +78,12 @@
         {{ form.direccion.errors }} <!-- Muestra errores específicos del campo -->
     </div>
 
-    <div class="form-group">
-        <label for="arrendador">Nombre de Arrendador:</label>
-        {{ form.arrendador|add_class:"form-control" }}
-        {{ form.arrendador.errors }} <!-- Muestra errores específicos del campo -->
+    <div class="form-group"></div>
+        <label for="imagen">Imagen del Inmueble:</label>
+        {{ form.imagen|add_class:"form-control" }}
+        {{ form.imagen.errors }} <!-- Muestra errores específicos del campo de imagen -->
     </div>
+
     <div class="mt-3">
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <a href="{% url 'detalle_inmueble' inmueble.id %}" class="btn btn-secondary">Cancelar</a>

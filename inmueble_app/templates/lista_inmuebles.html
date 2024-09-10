@@ -1,22 +1,57 @@
 {% extends 'base_generic.html' %}
 {% load widget_tweaks %}
 {% block content %}
+{% load static %}
 <h1>Lista de Inmuebles</h1>
+<form method="GET">
+    <label for="region">Región:</label>
+    <select name="region" id="region" onchange="actualizarComunas()">
+        <option value="">Todas las regiones</option>
+        {% for region in regiones %}
+        <option value="{{ region.id }}" {% if region.id|stringformat:"s" == region_id %}selected{% endif %}>
+            {{ region.nombre_region }}
+        </option>
+        {% endfor %}
+    </select>
 
+    <label for="comuna">Comuna:</label>
+    <select name="comuna" id="comuna">
+        <option value="">Todas las comunas</option>
+        {% for comuna in comunas %}
+        <option value="{{ comuna.id }}" {% if comuna_id|stringformat:"s" == comuna.id|stringformat:"s" %}selected{% endif %}>
+            {{ comuna.nombre_comuna }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Filtrar</button>
+</form>
 
 <ul class="list-group">
     {% for inmueble in inmuebles %}
-        <li class="list-group-item">
-            <div class="samita_productLabel-content">
-                <span class="samita_productLabel-content-text">ARRIENDO DISPONIBLE</span>
+        <li class="list-group-item" style="display: flex; align-items: center;">
+            <!-- Imagen del inmueble -->
+            <div class="inmueble-imagen" style="flex: 1;">
+                {% if inmueble.imagen %}
+                <img src="{{ inmueble.imagen.url }}" alt="Imagen del inmueble" style="max-width: 300px; max-height: 300px; object-fit: cover;">
+                {% else %}
+                <img src="{% static 'images\default.jpg' %}" alt="Imagen no disponible" style="max-width: 300px; max-height: 300px; object-fit: cover;">
+                {% endif %}
             </div>
-            <h3>{{ inmueble.nombre }}</h3>
-            <p>Tipo: {{ inmueble.id_tipoinmueble }}</p>
-            <p>Descripción: {{ inmueble.descripcion }}</p>
-            <p>Precio: {{ inmueble.precio_mensual }}</p>
-            <p>Ciudad: {{ inmueble.id_comuna }}</p> <!-- Ajusta según el modelo -->
-            <p>Arrendador: {{ inmueble.arrendador }}</p>
-            <a href="{% url 'detalle_inmueble' inmueble.id %}" class="btn btn-primary">Ver Detalle</a>  <!-- Enlace al detalle -->
+            
+            <!-- Detalles del inmueble -->
+            <div class="inmueble-detalles" style="flex: 2; padding-left: 20px;">
+                <div class="samita_productLabel-content">
+                    <span class="samita_productLabel-content-text">ARRIENDO DISPONIBLE</span>
+                </div>
+                <h3>{{ inmueble.nombre }}</h3>
+                <p>Tipo: {{ inmueble.id_tipoinmueble }}</p>
+                <p>Descripción: {{ inmueble.descripcion }}</p>
+                <p>Precio: {{ inmueble.precio_mensual }}</p>
+                <p>Ciudad: {{ inmueble.id_comuna }}</p> <!-- Ajusta según el modelo -->
+                <p>Arrendador: {{ inmueble.arrendador }}</p>
+                <a href="{% url 'detalle_inmueble' inmueble.id %}" class="btn btn-primary">Ver Detalle</a>
+            </div>
         </li>
     {% empty %}
         <li class="list-group-item">No se han agregado inmuebles.</li>
@@ -73,5 +108,29 @@
         {% endif %}
     </ul>
 </nav>
+
+<script>
+    function actualizarComunas() {
+        var regionId = document.getElementById('region').value;
+        var comunaSelect = document.getElementById('comuna');
+    
+        // Limpia el select de comunas antes de actualizarlo
+        comunaSelect.innerHTML = '<option value="">Todas las comunas</option>';
+    
+        if (regionId) {
+            fetch(`/obtener-comunas/?region_id=${regionId}`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(function(comuna) {
+                    var option = document.createElement('option');
+                    option.value = comuna.id;
+                    option.text = comuna.nombre_comuna;
+                    comunaSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+</script>
 
 {% endblock %}

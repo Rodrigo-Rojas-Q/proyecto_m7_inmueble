@@ -6,6 +6,8 @@
 .custom-footer{
     background-color: #1b1b22;
     color:#d8c5a7;
+    text-align: center;
+    padding: 1rem;
 }
 
 .navbar-nav{
@@ -150,3 +152,24 @@
     color: #1b1b22; /* Cambia el color del texto al pasar el mouse */
     border-color: #d8c5a7; /* Cambia el color del borde del elemento activo */
 }
+/* necesario para dejar el footer pegado al fondo*/
+/* HTML y body deben ocupar toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* El cuerpo principal de la página usa flex para empujar el footer hacia abajo */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Mínimo de la altura es toda la pantalla */
+}
+
+/* El contenedor principal del contenido (container) crece para ocupar el espacio disponible */
+main.container {
+    flex: 1;
+}
+/* necesario para dejar el footer pegado al fondo*/
+
